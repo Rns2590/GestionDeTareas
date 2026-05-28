@@ -22,8 +22,8 @@ public class GestionTareas {
         
         UsuarioDAO  usuarioDAO = new UsuarioDAO();
         // Creación de un nuevo usuario
-        Usuario nuevoUsuario = new Usuario(null,"Pepe","Sapo","psapo","123456");
-       usuarioDAO.agregarUsuario(nuevoUsuario);
+        //Usuario nuevoUsuario = new Usuario(null,"Pepe","Sapo","psapo","123456");
+       //usuarioDAO.agregarUsuario(nuevoUsuario);
         // Traer todos los usuarios 
         System.out.println(usuarioDAO.obtenerTodosUsuarios());
         
