@@ -1,4 +1,4 @@
-package gestionDeTareas.Logica;
+package gestionDeTareas.repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

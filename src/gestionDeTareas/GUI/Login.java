@@ -1,5 +1,5 @@
 package gestionDeTareas.GUI;
-import gestionDeTareas.Logica.*;
+import gestionDeTareas.controller.LoginController;
 
 import javax.swing.JOptionPane;
 
@@ -101,12 +101,9 @@ public class Login extends javax.swing.JInternalFrame {
         String username = txtUsuario.getText(); // Método que obtenga el texto del campo de usuario
         String password = new String(txtPass.getPassword()); // Método que obtenga el texto del campo de contraseña
 
-        // Crear un objeto Usuario
-        Usuario usuario = new Usuario(null, null, null, username, password);
-
-        // Usar el UsuarioDAO para validar
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        if (usuarioDAO.validarUsuario(usuario)) {
+        // Autenticar con el controlador
+        LoginController loginController = new LoginController();
+        if (loginController.authenticate(username, password)) {
             // El usuario ha sido autenticado correctamente
             JOptionPane.showMessageDialog(this, "Bienvenido " + username);
 

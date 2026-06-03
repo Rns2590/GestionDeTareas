@@ -1,11 +1,9 @@
-package gestionDeTareas.Logica;
+package gestionDeTareas.app;
 import javax.swing.JFrame;
-import gestionDeTareas.GUI.MenuPrincipal; // Importar la clase JFrame
-/**
- * @author silva
- */
+import gestionDeTareas.GUI.MenuPrincipal;
 import java.sql.Connection;
 import java.sql.SQLException;
+import gestionDeTareas.repository.Util;
 
 public class GestionTareas {
     public static void main(String[] args) {
@@ -19,13 +17,6 @@ public class GestionTareas {
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos: " + e.getMessage());
         }
-        
-        UsuarioDAO  usuarioDAO = new UsuarioDAO();
-        // Creación de un nuevo usuario
-        //Usuario nuevoUsuario = new Usuario(null,"Pepe","Sapo","psapo","123456");
-       //usuarioDAO.agregarUsuario(nuevoUsuario);
-        // Traer todos los usuarios 
-        System.out.println(usuarioDAO.obtenerTodosUsuarios());
         
         // Ejecutar el JFrame en el hilo de eventos
         java.awt.EventQueue.invokeLater(new Runnable() {

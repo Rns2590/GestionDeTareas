@@ -1,7 +1,7 @@
-package gestionDeTareas.Logica;
-
+package gestionDeTareas.repository;
 
 import java.sql.Connection;
+import gestionDeTareas.model.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package gestionDeTareas.Logica;
+package gestionDeTareas.model;
 
 public class Usuario {
     

@@ -1,7 +1,7 @@
 package gestionDeTareas.GUI;
 
-import gestionDeTareas.Logica.Usuario;
-import gestionDeTareas.Logica.UsuarioDAO;
+import gestionDeTareas.controller.UsuarioController;
+import gestionDeTareas.model.Usuario;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -15,8 +15,8 @@ public class Usuarios extends javax.swing.JInternalFrame {
        
     // Variable global para el modo de edición
     public boolean modoEdicion = true;  
-    // Usar el UsuarioDAO para validar
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    // Usar el controlador para operaciones de usuario
+    UsuarioController usuarioController = new UsuarioController();
     
     /**
      * Creates new form Usuarios
@@ -37,7 +37,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
         modelo.setRowCount(0);
 
         // Obtener los datos de los usuarios desde la base de datos
-        List<Usuario> listaUsuarios = usuarioDAO.obtenerTodosUsuarios();
+        List<Usuario> listaUsuarios = usuarioController.listarUsuarios();
 
         // Recorrer la lista de usuarios y agregar cada uno al modelo
         for (Usuario usuario : listaUsuarios) {
@@ -351,7 +351,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
 
         if (respuesta == JOptionPane.YES_OPTION) {
             // Si el usuario confirma, proceder a eliminar
-            usuarioDAO.eliminarUsuario(id);
+            usuarioController.eliminarUsuario(id);
             JOptionPane.showMessageDialog(this, "Usuario eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
             // Opcional: Llamar a llenarGrilla para actualizar la tabla después de eliminar
@@ -384,12 +384,12 @@ public class Usuarios extends javax.swing.JInternalFrame {
             // Modo de edición: Actualizar el usuario existente
             int id = Integer.parseInt(txtId.getText()); // Obtener el ID del usuario a editar
             Usuario usuarioActualizado = new Usuario(id, nombre, apellido, usuario, contraseña);
-            usuarioDAO.actualizarUsuario(usuarioActualizado);
+            usuarioController.actualizarUsuario(usuarioActualizado);
             JOptionPane.showMessageDialog(this, "Usuario actualizado correctamente.");
         } else {
             // Modo de creación: Agregar un nuevo usuario
-            Usuario nuevoUsuario = new Usuario(null,nombre, apellido, usuario, contraseña);
-            usuarioDAO.agregarUsuario(nuevoUsuario);
+            Usuario nuevoUsuario = new Usuario(null, nombre, apellido, usuario, contraseña);
+            usuarioController.crearUsuario(nuevoUsuario);
             JOptionPane.showMessageDialog(this, "Usuario agregado correctamente.");
         }
 
